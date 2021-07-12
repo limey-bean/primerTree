@@ -103,7 +103,7 @@ BLAST_primer = function(forward, reverse, ..., organism='',
                  EVALUE="100000",
                  WORD_SIZE="6",
                  NUM_TARGETS_WITH_PRIMERS='100000',
-                 MAX_TARGET_PER_TEMPLATE = '100000'))
+                 MAX_TARGET_PER_TEMPLATE = '100000')
 
   names(options) = toupper(names(options))
 
