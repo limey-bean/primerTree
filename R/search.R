@@ -29,7 +29,7 @@ primer_search = function(forward, reverse, num_aligns=500, num_permutations=25, 
   message('BLASTing ', nrow(primers), ' primer combinations')
   #enumerate all combinations to handle ambiguity codes
   alply(primers, .margins=1, .expand=F, .parallel=.parallel, .progress=.progress,
-        function(row) BLAST_primer(row$forward, row$reverse, hitsize= 100000, num_targets_with_primers=100000, ...))
+        function(row) BLAST_primer(row$forward, row$reverse, num_targets_with_primers=100000, ...))
 }
 iupac = list( "M" = list("A", "C"),
               "R" = list("A", "G"),
@@ -98,7 +98,12 @@ BLAST_primer = function(forward, reverse, ..., organism='',
                  organism=organism,
                  primer_specificity_database=primer_specificity_database,
                  exclude_env=exclude_env,
-                 search_specific_primer='on')
+                 search_specific_primer='on',
+                 HITSIZE="100000",
+                 EVALUE="100000",
+                 WORD_SIZE="6",
+                 NUM_TARGETS_WITH_PRIMERS='100000',
+                 MAX_TARGET_PER_TEMPLATE = '100000'))
 
   names(options) = toupper(names(options))
 
